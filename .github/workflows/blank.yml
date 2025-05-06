@@ -1,0 +1,53 @@
+name: Zap Scan
+
+ 
+
+# Controls when the workflow will run
+
+on:
+
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+
+  push:
+
+    branches: [ "main" ]
+
+  pull_request:
+
+    branches: [ "main" ]
+
+ 
+
+  # Allows you to run this workflow manually from the Actions tab
+
+  workflow_dispatch:
+
+ 
+
+permissions:
+
+  issues: write
+
+ 
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
+jobs:
+
+  # This workflow contains a single job called "build"
+
+  zap_scan:
+
+   runs-on: ubuntu-latest
+
+   steps:
+
+      # Run ZAP Scan
+
+      - name: ZAP Scan
+
+        uses: zaproxy/action-baseline@v0.14.0
+
+        with:
+
+          target: 'https://www.medium.com/'
